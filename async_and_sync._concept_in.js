@@ -18,7 +18,7 @@ console.log(4);
 
 setTimeout(() =>{ console.log('(setTimeout) nijer icce moto 4 second pore output dekabe,') } , 4000);
 
-setInterval(() =>{ console.log('(setInterval) nijer icce moto take jei time set kore dewa hoise sei time por por bar bar colte takbe.') } , 2000);
+setInterval(() =>{ console.log('(setInterval) nijer icce moto take jei time set kore dewa hoise sei time por por bar bar colte takbe.') } , 2000);//ekane (setinterval) er kaj ta tar modde set kora dewa smy por por coltei thakbe, continously so 2tai off korar (settimeout & setinterval) off korar ekta way ase seta holo 
 
 
 console.log(5);
