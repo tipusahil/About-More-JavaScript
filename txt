@@ -1,0 +1,54 @@
+const { exec } = require('child_process');
+const fs = require('fs');
+const path = require('path');
+
+// GitHub Repo details
+const githubRepo = 'https://github.com/yourUsername/yourRepo.git'; // replace with your repo
+const gitUser = 'yourGitUsername'; // replace with your git username
+const gitToken = 'yourGitToken'; // replace with your GitHub token
+const localFolder = path.join(__dirname, 'yourLocalFolder'); // path to your local folder
+
+// Codeforces API setup (use your Codeforces API Key here)
+const cfAPIKey = 'yourCodeforcesAPIKey'; // replace with your codeforces API key
+const cfUser = 'yourCodeforcesUsername'; // replace with your Codeforces username
+
+// HackerRank API setup (use your HackerRank API Key here)
+const hackerrankAPIKey = 'yourHackerRankAPIKey'; // replace with your HackerRank API key
+
+// GitHub push function
+function pushToGitHub() {
+  exec(`git add . && git commit -m "New commit" && git push https://${gitUser}:${gitToken}@${githubRepo}`, { cwd: localFolder }, (err, stdout, stderr) => {
+    if (err) {
+      console.error(`GitHub Push Error: ${stderr}`);
+    } else {
+      console.log(`GitHub Push Output: ${stdout}`);
+      pushToCodeforces();
+    }
+  });
+}
+
+// Codeforces push function (cf-tool)
+function pushToCodeforces() {
+  exec(`cf push --contest ${cfUser} --problem yourProblemCode --solution ${localFolder}/yourFile.cpp --api-key ${cfAPIKey}`, { cwd: localFolder }, (err, stdout, stderr) => {
+    if (err) {
+      console.error(`Codeforces Push Error: ${stderr}`);
+    } else {
+      console.log(`Codeforces Push Output: ${stdout}`);
+      pushToHackerRank();
+    }
+  });
+}
+
+// HackerRank push function
+function pushToHackerRank() {
+  exec(`curl -X POST -H "Authorization: Bearer ${hackerrankAPIKey}" -F "file=@${localFolder}/yourFile.cpp" https://www.hackerrank.com/api/yourHackerRankEndpoint`, (err, stdout, stderr) => {
+    if (err) {
+      console.error(`HackerRank Push Error: ${stderr}`);
+    } else {
+      console.log(`HackerRank Push Output: ${stdout}`);
+    }
+  });
+}
+
+// Start the process
+pushToGitHub();
