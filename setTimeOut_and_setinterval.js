@@ -12,22 +12,28 @@
 // (setinterval) er protom peramitar hisebe arrow function/anonymous function,kinba functionCallBack egulo protom peramitar hisebe beshi use hoi 
 },(second peramitar = kotoSmyPorPorRepeatHobeSeiTimeTaJmn:3000 / interval));
 
+
+@@2. (setinterval) ta ghorir katar moto coltei tahkbe, jotokkon off kora na hoi. & setinterval off korar ketre (setinterval) k ekta id dite hobe, sei id dhorei ( clearInterval(setintervalID) ) setinterval ta off korbe. 
 */
 
 // 1. settimeout:
-settimeout(() => {
-    console.log('i am settimeout,jeta nirdisto smy pore ekbari execute hobe. & (2000) eta holo nirdisto smy, ortat 2second porei execute howar jonno (2000) dewa hoise.');
-} , 2000);
 
+// setTimeout(() => {
+//     console.log('yes bro');
+// }, 3000);
+
+/* 'i am settimeout,jeta nirdisto smy pore ekbari execute hobe. & (2000) eta holo nirdisto smy, ortat 2second porei execute howar jonno (2000) dewa hoise.' */
 
 
 let num =0;
 // 2. setinterval :
-setinterval(() => {
-    console.log('i am (setinterval) jeta nirdisto smy por por bar bar run/execute hote thakbe, tobe ei bar bar run/execute howata off kora jai. (clearInterval()) ei metod er maddome ')
+ const setintervalIDname = setinterval(() => {
+
+    console.log('i am (setinterval) jeta nirdisto smy por por bar bar run/execute hote thakbe, tobe ei bar bar run/execute howata off kora jai. (clearInterval()) ei metod er maddome ');
     num++;
     console.log(num);
-} , 1000);
+
+} , 2000);
 
 clearInterval()// eta setitmout & setinterval off korar jonno use hoi
 
