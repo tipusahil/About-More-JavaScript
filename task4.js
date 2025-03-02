@@ -13,6 +13,7 @@ if( jokes_joke === undefined ){
 
 }
 
+
     console.log(id , jokes_joke);
 
     seeNewJoke(id , jokes_joke)
